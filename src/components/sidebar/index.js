@@ -6,13 +6,15 @@ SideSearch,
 SideMain,
 Card,
 SideInputContainer,
-SideHeaderRight
+SideHeaderRight,
+CardContainer
 } from "./styles";
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import DonutLargeIcon from '@mui/icons-material/DonutLarge';
 import ChatIcon from '@mui/icons-material/Chat';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import SearchIcon from '@mui/icons-material/Search';
 
 export default function Sidebar({children}){
     return (
@@ -50,7 +52,8 @@ Sidebar.Search = function SideBarSearch({...props}){
     const [searchval, setSearchVal] = useState(''); 
     return (
         <SideSearch>
-            <SideInputContainer> 
+            <SideInputContainer>
+            <SearchIcon /> 
                 <input 
                     autoFocus 
                     value={searchval}
@@ -66,12 +69,14 @@ Sidebar.Search = function SideBarSearch({...props}){
 
 Sidebar.Chatcard = function SidebarChatcard({name,lastmessage,children, ...props}){
     return (
-        <Card {...props}>           
-            <Avatar src="/broken-image.jpg" />
-            <div className="user-details">
-                <p className="name">{name}</p>
-                <p className="message">{lastmessage}</p>
-            </div>         
+        <Card {...props}> 
+            <CardContainer>
+                <Avatar src="/broken-image.jpg" />    
+                <div className="user-details">
+                    <p className="name">Room name</p>
+                    <p className="message">Last message</p>
+                </div>
+            </CardContainer>          
         </Card>
     )
 }   

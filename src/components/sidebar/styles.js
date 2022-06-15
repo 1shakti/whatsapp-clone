@@ -23,10 +23,41 @@ export const SideHeaderRight = styled.div`
     }
 `;
 
-export const SideSearch = styled.div``;
+export const SideSearch = styled.div`
+    display: flex;
+    align-items: center;
+    background-color: #f6f6f6;
+    height: 39px;
+    padding: 10px;
+`;
 
 export const SideMain =  styled.div``;
 
-export const Card =  styled.div``;
 
-export const SideInputContainer = styled.div``;
+export const SideInputContainer = styled.div`
+    display: flex;
+    align-items: center;
+    background-color: white;
+    width: 100%;
+    height: 35px;
+    border-radius: 20px;
+
+    input {
+        border: none;
+        margin-left: 10px;
+    }
+
+    .MuiSvgIcon-root {
+        color: grey;
+        padding: 10px;
+    }
+`;
+
+export const Card =  styled.div`
+    flex: 1;
+    background-color: blue;
+`;
+
+export const CardContainer = styled.div`
+
+`;
