@@ -3,7 +3,7 @@ import {
 SidebarContainer,
 SideHeader,
 SideSearch,
-SideMain,
+Main,
 Card,
 SideInputContainer,
 SideHeaderRight,
@@ -15,6 +15,7 @@ import DonutLargeIcon from '@mui/icons-material/DonutLarge';
 import ChatIcon from '@mui/icons-material/Chat';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import SearchIcon from '@mui/icons-material/Search';
+import { useEffect } from "react";
 
 export default function Sidebar({children}){
     return (
@@ -41,12 +42,6 @@ Sidebar.Header = function SidebarHeader({children, ...props}){
     )
 }
 
-Sidebar.Main = function SideBarMain({children}){
-    return (
-        <SideMain>
-            {children}
-        </SideMain>
-)}
 
 Sidebar.Search = function SideBarSearch({...props}){
     const [searchval, setSearchVal] = useState(''); 
@@ -67,17 +62,25 @@ Sidebar.Search = function SideBarSearch({...props}){
     )
 }
 
+Sidebar.Main = function SidebarMain({children}){
+    return <Main>{children}</Main>;
+}
+
 Sidebar.Chatcard = function SidebarChatcard({name,lastmessage,children, ...props}){
+
+    const [seed, setSeed] = useState('');
+    useEffect(() => {
+        setSeed(Math.floor(Math.random() * 5000));
+    },[]);
+
     return (
-        <Card {...props}> 
             <CardContainer>
-                <Avatar src="/broken-image.jpg" />    
+                <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />    
                 <div className="user-details">
-                    <p className="name">Room name</p>
-                    <p className="message">Last message</p>
+                    <h2>Room name</h2>
+                    <p>Last message</p>
                 </div>
-            </CardContainer>          
-        </Card>
+            </CardContainer>
     )
 }   
 

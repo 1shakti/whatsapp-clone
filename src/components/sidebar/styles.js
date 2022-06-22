@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const SidebarContainer = styled.div`
+    display: flex;
+    flex-direction: column;
     flex: 0.35;
 `;
 
@@ -31,7 +33,6 @@ export const SideSearch = styled.div`
     padding: 10px;
 `;
 
-export const SideMain =  styled.div``;
 
 
 export const SideInputContainer = styled.div`
@@ -53,11 +54,30 @@ export const SideInputContainer = styled.div`
     }
 `;
 
-export const Card =  styled.div`
+export const Main = styled.div`
     flex: 1;
-    background-color: blue;
+    background-color: white;
+    overflow: scroll;
 `;
 
 export const CardContainer = styled.div`
+    display: flex; 
+    padding: 20px;
+    cursor: pointer;
+    border-bottom: 1px solid #f6f6f6;  
+    &:hover {
+    background-color: #ebebeb;
+    }
 
+    .user-details {
+        margin-left: 15px;
+    }
+
+    .user-details > h2{
+        font-size: 16px;
+        margin-bottom: 8px;   
+    }
 `;
+
+
+
