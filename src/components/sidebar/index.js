@@ -4,7 +4,6 @@ SidebarContainer,
 SideHeader,
 SideSearch,
 Main,
-Card,
 SideInputContainer,
 SideHeaderRight,
 CardContainer
