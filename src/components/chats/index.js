@@ -3,13 +3,16 @@ import {
 Container,    
 ChatHeader,
 Chatsection,
-Message
+Message,
+Footer
 } from './styles';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import AttachFile from '@mui/icons-material/AttachFile';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import SearchIcon from '@mui/icons-material/Search';
+import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
+import MicIcon from '@mui/icons-material/Mic';
 
 export default function MainContent({children}) {
   return (
@@ -55,9 +58,9 @@ MainContent.ChatSection = function MainContentChatSection({children}){
     ) 
 }
 
-MainContent.ChatMessage = function MainContentChatMessage(){
+MainContent.ChatMessage = function MainContentChatMessage({...props}){
     return (
-        <Message>
+        <Message {...props}>
             <span className='chat__name'>Shakti</span>
             Hey guys
             <span className='chat__timestamp'>11:36pm</span>    
@@ -65,3 +68,16 @@ MainContent.ChatMessage = function MainContentChatMessage(){
     )
 }
 
+
+MainContent.ChatFooter = function MainContentChatFooter(){
+    return (
+        <Footer>
+            <EmojiEmotionsIcon />
+            <form>
+                <input type="text" placeholder='Type a message' />
+                <button>Send a message</button>
+            </form>
+            <MicIcon />
+        </Footer>
+    )
+}

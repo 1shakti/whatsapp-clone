@@ -39,7 +39,7 @@ export const Chatsection = styled.div`
     background-repeat: repeat;
     background-position: center;
     padding: 30px;
-    overflow: scroll;
+    y-overflow: scroll;
 `;
 
 export const Message = styled.p`
@@ -50,11 +50,12 @@ export const Message = styled.p`
     border-radius: 10px;
     margin-bottom: 30px;
     width: fit-content;
+    ${({ chatreciver }) => `
     &{
         background-color: #dcf8c6;
         margin-left: auto;
-     }
-        
+    }`
+    }   
 
     .chat__name {
         font-weight: 800;
@@ -66,6 +67,27 @@ export const Message = styled.p`
     .chat__timestamp {
         margin-left: 10px;
         font-size: xx-small;
+    }
+
+`;
+
+export const Footer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 62px;
+    border-top: 1px solid lightgray;
+
+    form {
+        flex: 1;
+        display: flex;
+    }
+
+    form > input {
+        flex: 1;
+        border-radius: 30px;
+        padding: 10px;
+        border: none;
     }
 
 `;
