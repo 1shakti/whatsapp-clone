@@ -65,21 +65,32 @@ Sidebar.Main = function SidebarMain({children}){
     return <Main>{children}</Main>;
 }
 
-Sidebar.Chatcard = function SidebarChatcard({name,lastmessage,children, ...props}){
+Sidebar.Chatcard = function SidebarChatcard({id , name, addNewChat }){
 
     const [seed, setSeed] = useState('');
     useEffect(() => {
         setSeed(Math.floor(Math.random() * 5000));
     },[]);
 
-    return (
-            <CardContainer>
+    const createChat = () => {
+        const roomName = prompt("Please Enter name for chat");
+            if (roomName){
+
+            }
+    }
+
+    return !addNewChat ? (
+            <CardContainer onClick={createChat}>
                 <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />    
                 <div className="user-details">
-                    <h2>Room name</h2>
+                    <h2>{name}</h2>
                     <p>Last message</p>
                 </div>
-            </CardContainer>
+            </CardContainer> 
+    ):(
+        <CardContainer onClick={createChat}>
+            <h2>Add New Chat</h2>
+        </CardContainer>
     )
 }   
 

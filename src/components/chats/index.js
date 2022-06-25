@@ -11,7 +11,7 @@ import IconButton from '@mui/material/IconButton';
 import AttachFile from '@mui/icons-material/AttachFile';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import SearchIcon from '@mui/icons-material/Search';
-import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
+import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
 import MicIcon from '@mui/icons-material/Mic';
 
 export default function MainContent({children}) {
@@ -69,13 +69,17 @@ MainContent.ChatMessage = function MainContentChatMessage({...props}){
 }
 
 
-MainContent.ChatFooter = function MainContentChatFooter(){
+MainContent.ChatFooter = function MainContentChatFooter({inputProps, sendMessage}){
+
     return (
         <Footer>
-            <EmojiEmotionsIcon />
+            <InsertEmoticonIcon />
             <form>
-                <input type="text" placeholder='Type a message' />
-                <button>Send a message</button>
+                <input 
+                    type="text" 
+                    placeholder='Type a message'  { ...inputProps }
+                />
+                <button onClick={sendMessage} type="submit">Send a message</button>
             </form>
             <MicIcon />
         </Footer>

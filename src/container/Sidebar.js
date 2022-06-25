@@ -1,15 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Sidebar from '../components/sidebar';
+import db from "../lib/firebase.prod";
 
 export default function SidebarContainer() {
+
+  const [rooms, setRooms] = useState([]);
+
+  useEffect(() => {
+    db.collection("rooms").onSnapshot((snapshot) => 
+      setRooms(
+        snapshot.docs.map((doc) => ({
+          id:doc.id,
+          name:doc.data(),
+        }))
+      )
+    )
+  }, []);
+
   return (
         <Sidebar>
             <Sidebar.Header />
             <Sidebar.Search />
             <Sidebar.Main>
-              <Sidebar.Chatcard />
-              <Sidebar.Chatcard />
-              <Sidebar.Chatcard />
+              <Sidebar.Chatcard addNewChat />
+              {rooms.map((room) => (
+                <Sidebar.Chatcard key={room.id} id={room.id} name={room.data.name} />
+              ))}
+              <Sidebar.Chatcard addNewChat />
             </Sidebar.Main>
         </Sidebar>
   )

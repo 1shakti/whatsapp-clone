@@ -50,7 +50,7 @@ export const Message = styled.p`
     border-radius: 10px;
     margin-bottom: 30px;
     width: fit-content;
-    ${({ chatreciver }) => `
+    ${({ chatreciever }) => chatreciever && `
     &{
         background-color: #dcf8c6;
         margin-left: auto;
@@ -90,4 +90,12 @@ export const Footer = styled.div`
         border: none;
     }
 
+    form > button {
+        display: none;
+    }
+
+    .MuiSvgIcon-root {
+        padding: 10px;
+        color: gray;
+    }
 `;
