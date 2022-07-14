@@ -6,15 +6,21 @@ export default function SidebarContainer() {
 
   const [rooms, setRooms] = useState([]);
 
+
   useEffect(() => {
-    db.collection("rooms").onSnapshot((snapshot) => 
-      setRooms(
-        snapshot.docs.map((doc) => ({
-          id:doc.id,
-          name:doc.data(),
-        }))
-      )
-    )
+    const unsubscribe = db.collection("rooms").onSnapshot((snapshot) => 
+         setRooms(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            data: doc.data(),
+          }))
+         ) 
+    );
+
+    return () => {
+      unsubscribe();
+    }
+
   }, []);
 
   return (
@@ -26,7 +32,6 @@ export default function SidebarContainer() {
               {rooms.map((room) => (
                 <Sidebar.Chatcard key={room.id} id={room.id} name={room.data.name} />
               ))}
-              <Sidebar.Chatcard addNewChat />
             </Sidebar.Main>
         </Sidebar>
   )

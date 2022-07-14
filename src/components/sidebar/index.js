@@ -15,6 +15,7 @@ import ChatIcon from '@mui/icons-material/Chat';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import SearchIcon from '@mui/icons-material/Search';
 import { useEffect } from "react";
+import db from "../../lib/firebase.prod";
 
 export default function Sidebar({children}){
     return (
@@ -75,12 +76,14 @@ Sidebar.Chatcard = function SidebarChatcard({id , name, addNewChat }){
     const createChat = () => {
         const roomName = prompt("Please Enter name for chat");
             if (roomName){
-
+                db.collection("rooms").add({
+                    name: roomName,
+                });     
             }
     }
 
     return !addNewChat ? (
-            <CardContainer onClick={createChat}>
+            <CardContainer>
                 <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />    
                 <div className="user-details">
                     <h2>{name}</h2>
