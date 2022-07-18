@@ -20,7 +20,7 @@ export default function MainContent({children}) {
   )
 }
 
-MainContent.Header = function MainContentHeader() {
+MainContent.Header = function MainContentHeader({roomName}) {
     
     const [seed, setSeed] = useState("");
     
@@ -32,7 +32,7 @@ MainContent.Header = function MainContentHeader() {
         <ChatHeader>
                 <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`}/>
                 <div className="chat__headerinfo">
-                    <h3>Room Name</h3>
+                    <h3>{roomName}</h3>
                     <p>Last seen at ...</p>
                 </div>
                 <div className="chat__headeright">

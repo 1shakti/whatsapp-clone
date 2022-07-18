@@ -1,9 +1,20 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import MainContent from '../components/chats';
+import db from '../lib/firebase.prod';
 
 export default function Chats() {
 const [inputVal, setInputVal] = useState("");
+const [roomName, setRoomName] = useState("");
+const { roomId } = useParams();
 const userInput = useRef(null);
+
+useEffect(() => {
+  if(roomId){
+    db.collection("rooms").doc(roomId).onSnapshot((snapshot) => setRoomName(snapshot.data().name));
+  }
+},[roomId]);
+
 
 function sendMessage(e) {
     e.preventDefault();
@@ -13,7 +24,7 @@ function sendMessage(e) {
 
   return (
     <MainContent>
-        <MainContent.Header />
+        <MainContent.Header roomName={roomName} />
         <MainContent.ChatSection>
           <MainContent.ChatMessage chatreciever={true} />
         </MainContent.ChatSection>

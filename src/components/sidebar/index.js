@@ -16,6 +16,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import SearchIcon from '@mui/icons-material/Search';
 import { useEffect } from "react";
 import db from "../../lib/firebase.prod";
+import { Link } from "react-router-dom";
 
 export default function Sidebar({children}){
     return (
@@ -83,6 +84,7 @@ Sidebar.Chatcard = function SidebarChatcard({id , name, addNewChat }){
     }
 
     return !addNewChat ? (
+        <Link to={`/room/${id}`}>
             <CardContainer>
                 <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />    
                 <div className="user-details">
@@ -90,6 +92,7 @@ Sidebar.Chatcard = function SidebarChatcard({id , name, addNewChat }){
                     <p>Last message</p>
                 </div>
             </CardContainer> 
+        </Link>
     ):(
         <CardContainer onClick={createChat}>
             <h2>Add New Chat</h2>
